@@ -31,14 +31,17 @@ float atualizaSaldo(float saldo, float ajuste){
 //imprime a tabela
 void imprimeTabela(Item itens[],int numItens){
 
-    for(int i = 0; i <17; i++){
+    for(int i = 0; i <2; i++){
         printf("\n");
     }
 
-    printf("Digite \n");
-    printf("1 - Retirar item | 2 - Devolver item | 3 - Cadastrar Usuario | 4 - Cadastra Item\n");
-    printf("0 - Sair | 5 - Reservar | 6 - Ver reservas \n");
-    printf("Itens: \n");
+    printf("======================================================================================================================================================================\n");
+    printf("| Digite: |                                                                                                                                                          |\n");
+    printf("======================================================================================================================================================================\n");
+    printf("| 1 - Retirar Item | 2 - Devolver Item | 3 - Cadastrar Usuario | 4 - Cadastrar Item | 5 - Reservar | 6 - Ver Reservas | 7 - Ver Usuarios | 0 Sair |                  |\n");
+    printf("======================================================================================================================================================================\n");
+    printf("| Itens: |                                                                                                                                                           |\n");
+    printf("======================================================================================================================================================================\n");
     for(int i = 0; i < numItens; i++){
         if(itens[i].isGood){
             printf("%d - %s - %s \n", itens[i].codigo, itens[i].nome, itens[i].proprietario);
@@ -46,6 +49,7 @@ void imprimeTabela(Item itens[],int numItens){
             printf("%d - %s - %s \n", itens[i].codigo, itens[i].nome, "Manutencao");
         }
     }
+    printf("======================================================================================================================================================================\n");
 }
 
 
@@ -56,7 +60,7 @@ int main()
     char nome[20];
 
     //cria 4 itens
-    Item itens[5];
+    Item itens[10];
     strcpy (itens[0].nome,"Extensao");
     strcpy (itens[0].proprietario, "");
     itens[0].codigo = 1001;
@@ -88,7 +92,7 @@ int main()
 
     //cria 3 usuarios
     int numUsuario = 3;
-    Usuario user[5];
+    Usuario user[10];
     strcpy (user[0].nome, "Joao");
     user[0].tipo = 1;
     user[0].limite = 0;
@@ -103,6 +107,8 @@ int main()
     int numReservados = 0;
 
     printf("..######......####.....########\n.##....##......##......##......\n.##............##......##......\n..######.......##......######..\n.......##......##......##......\n.##....##.###..##..###.##......\n..######..###.####.###.########\n");
+    printf("\nSistema Integrado do Estoque - Versao GOEC_G1O2E3C4 \n");
+    printf("Todos os Direitos Reservados para Engenheiros 2025\n");
     printf("\n\n");
     char senha[20] = "123456";
     int i = 0;
@@ -126,7 +132,7 @@ int main()
         while(funcao != 0){
 
             imprimeTabela(itens, numItens);
-            printf("Digite a funcao desejada \n");
+            printf("Digite a funcao desejada \n\n\n");
             scanf("%d", &funcao);
 
             //switch case das funçoes
@@ -206,6 +212,7 @@ int main()
 
                     printf("Digite o nome e o tipo (1: funcionario 2:professor) do usuario a ser cadastrado\n");
                     scanf("%s %d", &user[numUsuario].nome, &user[numUsuario].tipo);
+                    user[numUsuario].limite = 0;
                     numUsuario++;
 
                     break;
@@ -217,7 +224,7 @@ int main()
                     scanf("%d %s %d", &itens[numItens].codigo, &itens[numItens].nome, &itens[numItens].tipo);
 
                     strcpy (itens[numItens].proprietario, "");
-                    itens[0].isGood = true;
+                    itens[numItens].isGood = true;
                     numItens++;
                     break;
 
@@ -247,6 +254,17 @@ int main()
 
                     break;
 
+                case 7:
+
+                    printf("Usuario - tipo\n");
+                    for(int x = 0; x < numUsuario; x++){
+
+                        printf("%s %d \n", user[x].nome, user[x].tipo);
+
+                    }
+
+                    break;
+
             }
 
 
@@ -255,5 +273,9 @@ int main()
     } else{
         printf("\nSenha incorreta");
     }
+    printf("======================================================================================================================================================================\n");
+    printf("\n\nVoce acabou de fechar o programa: \n \n");
+    printf("..######......####.....########\n.##....##......##......##......\n.##............##......##......\n..######.......##......######..\n.......##......##......##......\n.##....##.###..##..###.##......\n..######..###.####.###.########\n");
+    printf("======================================================================================================================================================================\n");
     return 0;
 }

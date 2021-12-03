@@ -1,0 +1,1 @@
+Rodar o programa em C e seguir o menu numérico apresentado pelo programa
